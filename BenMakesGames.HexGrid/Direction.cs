@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BenMakesGames.HexGrid
 {
-    enum Direction
+    public enum Direction
     {
         NorthEast,
         East,

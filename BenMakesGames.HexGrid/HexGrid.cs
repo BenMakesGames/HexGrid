@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BenMakesGames.HexGrid
 {
-    class HexGrid
+    public class HexGrid
     {
         // from https://stackoverflow.com/questions/14491444/calculating-distance-on-a-hexagon-grid
         // (with simplifications, "abusing" integer division)
