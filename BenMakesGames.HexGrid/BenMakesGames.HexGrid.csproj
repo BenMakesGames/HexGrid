@@ -1,19 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>8.0</LangVersion>
+    <TargetFramework>net6.0</TargetFramework>
     <Authors>Ben Hendel-Doying</Authors>
     <Company>Ben Hendel-Doying</Company>
     <Description>A C# class and enum that helps perform a variety of hex-grid functions, such as computing distance, getting directions, and drawing various shapes (rings, circles, lines, asterisks...)</Description>
-    <Copyright>2020 Ben Hendel-Doying</Copyright>
+    <Copyright>2022 Ben Hendel-Doying</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/BenMakesGames/HexGrid</PackageProjectUrl>
     <PackageTags>game math hex grid</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
-    <Version>1.0.1</Version>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.0.0</Version>
+    <Nullable>enable</Nullable>
+    <WarningsAsErrors>Nullable</WarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
