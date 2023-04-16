@@ -5,7 +5,7 @@
     <Company>Ben Hendel-Doying</Company>
     <Description>A C# class and enum that helps perform a variety of hex-grid functions, such as computing distance, getting directions, and drawing various shapes (rings, circles, lines, asterisks...)</Description>
     <Copyright>2022-2023 Ben Hendel-Doying</Copyright>
-    <Version>3.0.0</Version>
+    <Version>3.0.1</Version>
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>game math hex grid</PackageTags>
@@ -13,6 +13,7 @@
     <RepositoryUrl>https://github.com/BenMakesGames/HexGrid</RepositoryUrl>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>package-icon.png</PackageIcon>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 
@@ -27,6 +28,10 @@
       <PackagePath />
     </None>
     <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath />
+    </None>
+    <None Include="..\package-icon.png">
       <Pack>True</Pack>
       <PackagePath />
     </None>
