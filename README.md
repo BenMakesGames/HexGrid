@@ -1,4 +1,4 @@
-A C# class and enum that helps perform a variety of hex-grid functions, such as computing distance, getting directions, and drawing various shapes: lines, asterisks, arcs, rings, circles, and rectangles.
+HexGrid is a library that helps perform a variety of hex-grid functions, such as computing distance, getting directions, and drawing various shapes: lines, asterisks, arcs, rings, circles, and rectangles.
 
 This library assumes a hex grid of the following orientation:
 
@@ -12,14 +12,16 @@ o o o o
 * (0, 0) is the top-left cell
 * (1, 0) is the second cell in the first row
 * (0, 1) is the first cell in the second row
-* etc
+* etc.
 
-The Direction helper enum contains the six directions of movement allowed in a grid of this orientation: NorthWest, NorthEast, East, SouthEast, SouthWest, and West.
+The `Direction` enum contains the six directions of movement allowed in a grid of this orientation: `NorthWest`, `NorthEast`, `East`, `SouthEast`, `SouthWest`, and `West`.
 
-This library does not make any assumptions or have any requirements about how you store your tiles, however the above orientation was chosen because it is easy to represent using a traditional 2D array. All the methods provided by this library use (int x, int y) tuples to represent coordinates, accepting and returning coordinates in that form.
+This library does not make any assumptions or have any requirements about how you store your tiles, however the above orientation was chosen because it is easy to represent using a traditional 2D array. All the methods provided by this library use `(int x, int y)` tuples to represent coordinates, accepting and returning coordinates in that form.
 
 * nuget package: https://www.nuget.org/packages/BenMakesGames.HexGrid
 * GitHub repo: https://github.com/BenMakesGames/HexGrid
+
+[![Buy Me a Coffee at ko-fi.com](https://raw.githubusercontent.com/BenMakesGames/AssetsForNuGet/main/buymeacoffee.png)](https://ko-fi.com/A0A12KQ16)
 
 ---
 

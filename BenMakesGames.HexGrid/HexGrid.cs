@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BenMakesGames.HexGrid;
 
-public class HexGrid
+public static class HexGrid
 {
     // from https://stackoverflow.com/questions/14491444/calculating-distance-on-a-hexagon-grid
     // (with simplifications, "abusing" integer division)
@@ -16,8 +16,7 @@ public class HexGrid
     );
 
     /// <summary>
-    /// Given a starting location, a direction, and a distance, returns the coorindates of the
-    /// location 
+    /// Returns the coordinates of the location `distance` spaces away from the `origin` in the given `direction`.
     /// </summary>
     public static (int x, int y) Move((int x, int y) origin, Direction d, int distance = 1)
     {
@@ -74,8 +73,8 @@ public class HexGrid
     }
 
     /// <summary>
-    /// Returns -1 if tile is to the left of origin
-    /// Returns 1 if tile is to the right of origin
+    /// Returns -1 if `target` is to the left of `origin`
+    /// Returns 1 if `target` is to the right of `origin`
     /// Returns 0 otherwise
     /// </summary>
     public static int ComputeLeftRightOrientation((int x, int y) origin, (int x, int y) target)
@@ -85,33 +84,27 @@ public class HexGrid
         {
             if (target.x < origin.x)
                 return -1;
-            else if (target.x > origin.x)
+
+            if (target.x > origin.x)
                 return 1;
-            else
-                return 0;
+
+            return 0;
         }
 
         // tile is on ODD row; origin is on EVEN row:
         if (Math.Abs(target.y % 2) == 1 && origin.y % 2 == 0)
         {
-            if (target.x >= origin.x)
-                return 1;
-            else
-                return -1;
+            return target.x >= origin.x ? 1 : -1;
         }
 
         // tile is on EVEN row; origin is on ODD row:
-        if (target.x <= origin.x)
-            return -1;
-        else
-            return 1;
+        return target.x <= origin.x ? -1 : 1;
     }
 
     /// <summary>
-    /// Given a start and end point, returns a Direction that one would have to move, IN A STRAIGHT LINE
-    /// from the start point to reach the end point. If it is not possible to move in a straight line,
-    /// this function returns null.
-    /// </summary>
+    /// Given an `origin` and `destination`, returns a `Direction` that one would have to move, IN A STRAIGHT LINE from
+    /// the `origin` to reach the `destination`. If it is not possible to move in a straight line, this function
+    /// returns `null`.</summary>
     public static Direction? ComputeDirection((int x, int y) origin, (int x, int y) destination)
     {
         // micro-optimization: if Y coordinates are equal, then this is real easy to find out:
@@ -147,8 +140,10 @@ public class HexGrid
     }
 
     /// <summary>
-    /// An "arc" is formed by connecting two lines at a cell in such a way that the "arc" points
-    /// in the given direction. Ex: an arc facing East would look like a greater-than symbol: >
+    /// An "arc" is formed by connecting two lines at a cell in such a way that the "arc" points in the given
+    /// direction. For example, an arc facing `Direction.East` would look like a greater-than symbol: >
+    ///
+    /// The `sideLength` parameter determines how long each half of the arc is.
     /// </summary>
     public static List<(int x, int y)> ComputeArc((int x, int y) origin, Direction direction, int sideLength)
     {
@@ -161,9 +156,8 @@ public class HexGrid
     }
 
     /// <summary>
-    /// Given an initial direction (ex: NorthEast), and a number of clockwise turns to make,
-    /// returns the NEW direction after that many turns. (A Negative number of turns indicates
-    /// COUNTER-clockwise rotation.)
+    /// Given an initial `direction`, and a number of clockwise `turns` to make, returns the direction after making
+    /// that many `turns`. (A Negative number of `turns` indicates COUNTER-clockwise rotation.)
     /// </summary>
     public static Direction Rotate(Direction direction, int turns)
     {
@@ -189,9 +183,8 @@ public class HexGrid
     }
 
     /// <summary>
-    /// Returns a list of coordinates to form an asterisk shape. A minDistance greater than 0
-    /// will cause the center of the asterisk to be missing, as if a circle of radius minDistance
-    /// was cut out of the center.
+    /// Returns a list of coordinates to form an asterisk shape. A `minDistance` greater than 0 will cause the center
+    /// of the asterisk to be missing, as if a circle of radius `minDistance` was cut out of the center.
     /// </summary>
     public static List<(int x, int y)> ComputeAsterisk((int x, int y) origin, int minDistance, int maxDistance)
     {
@@ -208,8 +201,9 @@ public class HexGrid
     }
 
     /// <summary>
-    /// Returns a list of coordinates starting at the origin, and traveling maxDistance tiles in the given direction.
-    /// A minDistance greater than 0 will cause that many cells to be skipped from the beginning of the line.
+    /// Returns a list of coordinates starting at the `origin`, and traveling `maxDistance` tiles in the given
+    /// direction. A `minDistance` greater than 0 will cause that many cells to be skipped from the beginning of the
+    /// line.
     /// </summary>
     public static List<(int x, int y)> ComputeLine((int x, int y) origin, Direction direction, int minDistance, int maxDistance)
     {
@@ -230,8 +224,8 @@ public class HexGrid
     }
 
     /// <summary>
-    /// Returns a list of coordinates centered on (x, y) that represents a filled circle or ring.
-    /// A minDistance of 0 will create a circle.
+    /// Returns a list of coordinates centered on the `origin` that represents a filled circle or ring. A `minDistance`
+    /// of 0 will create a circle.
     /// </summary>
     public static List<(int x, int y)> ComputeRing((int x, int y) origin, int minDistance, int maxDistance)
     {
@@ -244,7 +238,7 @@ public class HexGrid
     }
 
     /// <summary>
-    /// Returns a list of coordinates centered on (x, y) that represents a unfilled circle/ring.
+    /// Returns a list of coordinates centered on the `origin` that represents a unfilled circle/ring.
     /// </summary>
     public static List<(int x, int y)> ComputeRing((int x, int y) origin, int distance)
     {
